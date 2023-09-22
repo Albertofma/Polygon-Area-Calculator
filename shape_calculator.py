@@ -40,12 +40,15 @@ class Rectangle:
   def get_amount_inside(self, new_shape):
     if self.get_area() > new_shape.get_area():
       if (self.height > new_shape.height) and (self.width > new_shape.width):
-        return int(self.get_area() / new_shape.get_area())
+        return int((self.width//new_shape.width)*(self.height//new_shape.height)) 
       else:
         return 0
     else:
       return 0
-    #This is actually incorrect, as there can be cases where if you cant rotate shapes, areas dont calculate the amount of times it can be fin inside, for example a 2x3 (as in file, columns) and a 5x4, according to areas, it should fit 3 times, but it doesnt, it fits 2 times. Nevertheless the test didnt try this cases, so my code will remain like that
+    #New code works as intended, older one passed the tests but was wrong. In this case, even if it is not asked, we make sure that the shape that has
+    #To fit inside actually does fit inside. Once done, a way of getting the number of times it fits inside taking into account that it cannot rotate is:
+    #First we check how many times the width fits inside, then we do the same for the height and then we multiply this values.
+    #Old code was int(self.get_area()/new_shape.get_area()).
     
       
 
